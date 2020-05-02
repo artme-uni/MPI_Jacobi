@@ -13,6 +13,8 @@ void grid_print(int layer_index, double *grid)
     printf("\n");
 }
 
+void is_boundary_cell(int index, int pr_cells_shift);
+
 void grid_init(double *grid, double *previous_grid, int pr_cells_count, int pr_cells_shift)
 {
     for (int i = 1; i < pr_cells_count + 1; i++)
@@ -101,22 +103,26 @@ double iteration_func(int i, int j, int k, double *grid, int pr_cells_shift)
              ro(i + pr_cells_shift, j, k)));
 }
 
-void saveValue(int i, const double *current_value, double *prev_value) {
-    int index;
-    for (int j = 1; j < NY - 1; j++) {
-        for (int k = 1; k < NZ - 1; k++) {
-            index = I(i, j, k);
-            prev_value[index] = current_value[index];
+void update_previous_grid(int index, double *current_value, double *prev_value)
+{
+    for (int j = 1; j < NY - 1; j++)
+    {
+        for (int k = 1; k < NZ - 1; k++)
+        {
+            prev_value[I(index, j, k)] = current_value[I(index, j, k)];
         }
     }
 }
 
 void update_grid_cell(int index, double *grid, double *previous_grid, int pr_cells_shift, double *pr_diff)
 {
-    if (index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1) {
-        saveValue(index, grid, previous_grid);
+    if (index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1)
+    {
+        update_previous_grid(index, grid, previous_grid);
+        //return;
     }
 
+    if(index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1)
     for (int j = 1; j < NY - 1; j++)
     {
         for (int k = 1; k < NZ - 1; k++)
@@ -132,7 +138,7 @@ void update_grid_cell(int index, double *grid, double *previous_grid, int pr_cel
         }
     }
 
-    saveValue(index, grid, previous_grid);
+    update_previous_grid(index, grid, previous_grid);
 }
 
 int jacobi_method(double *grid, int pr_cells_count, int pr_cells_shift)

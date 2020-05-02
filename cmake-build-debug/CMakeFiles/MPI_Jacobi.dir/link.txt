@@ -1,0 +1,1 @@
+/usr/local/bin/mpicxx  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/MPI_Jacobi.dir/main.cpp.o CMakeFiles/MPI_Jacobi.dir/Jacobi.cpp.o CMakeFiles/MPI_Jacobi.dir/baseline_data.cpp.o  -o MPI_Jacobi   -L/usr/local/opt/mpich/lib  -Wl,-rpath,/usr/local/opt/mpich/lib -lmpi 

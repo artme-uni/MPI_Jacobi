@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.cpp
+Jacobi.h
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.h
+
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.h
+stdio.h
+-
+stdlib.h
+-
+mpi.h
+-
+math.h
+-
+baseline_data.h
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.h
+
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.h
+
+/usr/local/opt/mpich/include/mpi.h
+stddef.h
+-
+cstdint
+-
+stdint.h
+-
+mpio.h
+/usr/local/opt/mpich/include/mpio.h
+mpicxx.h
+/usr/local/opt/mpich/include/mpicxx.h
+
+/usr/local/opt/mpich/include/mpicxx.h
+stdio.h
+-
+
+/usr/local/opt/mpich/include/mpio.h
+mpi.h
+/usr/local/opt/mpich/include/mpi.h
+
