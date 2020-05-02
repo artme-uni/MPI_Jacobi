@@ -119,10 +119,8 @@ void update_grid_cell(int index, double *grid, double *previous_grid, int pr_cel
     if (index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1)
     {
         update_previous_grid(index, grid, previous_grid);
-        //return;
     }
 
-    if(index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1)
     for (int j = 1; j < NY - 1; j++)
     {
         for (int k = 1; k < NZ - 1; k++)
