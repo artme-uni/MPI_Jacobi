@@ -10,5 +10,5 @@ double phi(double i, double j, double k)
 
 double ro(double i, double j, double k)
 {
-    return 77 - A * phi(i, j, k);
+    return 6 - A * phi(i, j, k);
 }

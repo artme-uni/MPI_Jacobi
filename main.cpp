@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     {
         printf("Iteration count: %d\n", iteration_count);
         printf("Time: %f\n", t_end - t_start);
-        grid_print(1, grid);
+        //grid_print(1, grid);
     }
 
     free(grid);
