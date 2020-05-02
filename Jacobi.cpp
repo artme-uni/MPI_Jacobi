@@ -13,7 +13,11 @@ void grid_print(int layer_index, double *grid)
     printf("\n");
 }
 
-void is_boundary_cell(int index, int pr_cells_shift);
+bool is_boundary_cell(int index, int bound)
+{
+    return index == 0 || index == bound - 1;
+}
+
 
 void grid_init(double *grid, double *previous_grid, int pr_cells_count, int pr_cells_shift)
 {
@@ -28,7 +32,7 @@ void grid_init(double *grid, double *previous_grid, int pr_cells_count, int pr_c
 
                 int actual_i = i + pr_cells_shift;
 
-                if (actual_i == 0 || actual_i == NX - 1 || j == 0 || j == NY - 1 || k == 0 || k == NZ - 1)
+                if (is_boundary_cell(actual_i, NX) || is_boundary_cell(j, NY) || is_boundary_cell(k, NZ))
                 {
                     grid[I(i, j, k)] = phi(actual_i, j, k);
                     previous_grid[I(i, j, k)] = phi(actual_i, j, k);
@@ -116,22 +120,21 @@ void update_previous_grid(int index, double *current_value, double *prev_value)
 
 void update_grid_cell(int index, double *grid, double *previous_grid, int pr_cells_shift, double *pr_diff)
 {
-    if (index + pr_cells_shift == 0 || index + pr_cells_shift == NX - 1)
+    int actual_index = index + pr_cells_shift;
+    if (!is_boundary_cell(actual_index, NX))
     {
-        update_previous_grid(index, grid, previous_grid);
-    }
-
-    for (int j = 1; j < NY - 1; j++)
-    {
-        for (int k = 1; k < NZ - 1; k++)
+        for (int j = 1; j < NY - 1; j++)
         {
-            grid[I(index, j, k)] = iteration_func(index, j, k, previous_grid, pr_cells_shift);
-
-            double cur_diff = fabs(grid[I(index, j, k)] - previous_grid[I(index, j, k)]);
-
-            if (*pr_diff < cur_diff)
+            for (int k = 1; k < NZ - 1; k++)
             {
-                *pr_diff = cur_diff;
+                grid[I(index, j, k)] = iteration_func(index, j, k, previous_grid, pr_cells_shift);
+
+                double cur_diff = fabs(grid[I(index, j, k)] - previous_grid[I(index, j, k)]);
+
+                if (*pr_diff < cur_diff)
+                {
+                    *pr_diff = cur_diff;
+                }
             }
         }
     }
