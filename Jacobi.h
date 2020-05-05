@@ -26,4 +26,6 @@ double iteration_func(int i, int j, int k, double* grid, int pr_cells_shift);
 
 void grid_print(int layer_index, double *grid);
 
+double get_observational_error(double* grid, int pr_cells_count, int pr_cells_shift);
+
 #endif //MPI_JACOBI_JACOBI_H

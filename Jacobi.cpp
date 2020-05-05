@@ -174,3 +174,30 @@ int jacobi_method(double *grid, int pr_cells_count, int pr_cells_shift)
 
     return iteration_count;
 }
+
+double get_observational_error(double *grid, int pr_cells_count, int pr_cells_shift)
+{
+    double pr_observational_error = 0;
+
+    for (int i = 1; i < pr_cells_count + 1; i++)
+    {
+        for (int j = 0; j < NY; j++)
+        {
+            for (int k = 0; k < NZ; k++)
+            {
+                int actual_i = i + pr_cells_shift;
+                double temp = fabs(grid[I(i, j, k)] - phi(actual_i, j, k));
+                if (temp > pr_observational_error)
+                {
+                    pr_observational_error = temp;
+                }
+            }
+        }
+    }
+
+    printf("%lf\n", pr_observational_error);
+
+    double observational_error;
+    MPI_Reduce(&pr_observational_error, &observational_error, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+    return observational_error;
+}

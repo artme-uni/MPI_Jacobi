@@ -28,11 +28,13 @@ int main(int argc, char **argv)
     int iteration_count = jacobi_method(grid, pr_cells_count, pr_cells_shift);
     double t_end = MPI_Wtime();
 
+    //double delta = get_observational_error(grid, pr_cells_count, pr_cells_shift);
+
     if (pr_rank == 0)
     {
         printf("Iteration count: %d\n", iteration_count);
         printf("Time: %f\n", t_end - t_start);
-        //grid_print(1, grid);
+        //printf("Delta: %lf\n", delta);
     }
 
     free(grid);

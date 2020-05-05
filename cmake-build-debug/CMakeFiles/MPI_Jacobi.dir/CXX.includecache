@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.cpp
+Jacobi.h
+/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.h
+
 /Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.h
 stdio.h
 -
@@ -18,23 +22,7 @@ math.h
 baseline_data.h
 /Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.h
 
-/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.cpp
-baseline_data.h
 /Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.h
-
-/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/baseline_data.h
-
-/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/main.cpp
-iostream
--
-stdio.h
--
-stdlib.h
--
-mpi.h
--
-Jacobi.h
-/Users/twiggy/Doc_Git/Concurrent/MPI_Jacobi/Jacobi.h
 
 /usr/local/opt/mpich/include/mpi.h
 stddef.h
